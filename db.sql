@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS rooms (
+    room_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    room_code TEXT UNIQUE NOT NULL,
+    room_members TEXT DEFAULT '[]',
+    room_chats TEXT DEFAULT '[]',
+    room_date DATETIME DEFAULT CURRENT_TIMESTAMP
+);

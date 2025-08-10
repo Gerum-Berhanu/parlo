@@ -1,0 +1,23 @@
+/* Chat Input */
+
+.c-input-wrapper input {
+    background-color: #eee;
+    border: none;
+    padding: 1rem;
+    font-size: 1rem;
+    width: 100%;
+    border-radius: 1rem;
+    color: black;
+    box-shadow: 0 0.4rem #dfd9d9;
+    cursor: pointer;
+}
+
+.c-input-wrapper input:focus {
+    outline-color: lightcoral;
+}
+
+/* Text shadow */
+
+.c-text-shadow-black {
+    text-shadow: 0 0 4px black;
+}

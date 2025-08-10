@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include '/mini-static/head.html' %}
+    <link rel="stylesheet" href="/static/css/room/styles.css">
+    <title>Room - {{room}}</title>
+</head>
+
+<body class="h-screen flex flex-col justify-center bg-gradient-to-br from-emerald-800 to-sky-900">
+    <div class="relative rounded-xl bg-slate-200/25 shadow-lg shadow-slate-800 flex flex-col border-2 border-slate-500 grow m-5">
+        <div class="bg-white/25 p-5 rounded-t-xl flex justify-between shadow-lg">
+            <div class="flex gap-1 justify-center items-center">
+                <img src="/static/imgs/logo.png" alt="LinguaFest Logo" width="50" class="max-[576px]:w-[30px] max-[576px]:h-[30px] max-[310px]:hidden">
+                <span id="room-code-span" class="cursor-pointer text-3xl text-white flex items-center justify-center font-bold c-text-shadow-black max-[576px]:text-xl">{{room}}</span>
+            </div>
+            <div class="flex bg-white/50 border-2 border-black justify-center items-center p-2 max-[576px]:p-1 rounded-xl gap-3">
+                <div class="flex gap-1 justify-center items-center">
+                    <span id="total-members" class="font-bold">{{members}}</span>
+                    <img width="25" height="25" class="max-[576px]:w-[20px] max-[576px]:h-[20px]" src="/static/imgs/eye.png" alt="eye">
+                </div>
+                <div class="flex">
+                    <img id="exit" width="25" height="25" class="cursor-pointer max-[576px]:w-[20px] max-[576px]:h-[20px]" src="/static/imgs/exit.png" alt="exit" />
+                </div>
+            </div>
+        </div>
+        <div id="chat-container" class="flex-grow p-5 shadow-inner overflow-y-auto"
+            style="max-height: calc(100vh - 220px);">
+            {% if not chats %}
+            <div class="font-extrabold text-3xl text-center text-white">No messages yet...</div>
+            {% endif %}
+
+            {% if chats %}
+            {% for m in chats|reverse %}
+            <div class="mb-5">
+                <div class="font-extrabold text-white bg-black/25 rounded-t-xl p-3">{{m.name}}</div>
+                <div class="bg-white/75 p-3 rounded-b-xl">{{m.message}}</div>
+            </div>
+            {% endfor %}
+            {% endif %}
+
+            <div class="absolute bottom-0 left-0 bg-[#6f9d9b] p-5 rounded-b-xl flex justify-between gap-5 shadow-lg w-full">
+
+                {% include '/mini-static/emoji.html' %}
+                <span id="emoji-toggle" class="absolute top-1 left-1 cursor-pointer"><img src="/static/imgs/emoji.svg" alt="emoji" width="20"></span>
+                
+                <div class="c-input-wrapper grow">
+                    <input type="text" id="my-message" placeholder="Type here..." name="text" class="input">
+                </div>
+                <button id="chat-send-btn" class="shadow-md shadow-white flex justify-center items-center">
+                    <div class="svg-wrapper-1">
+                        <div class="svg-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                <path fill="none" d="M0 0h24v24H0z"></path>
+                                <path fill="currentColor"
+                                    d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+                </button>
+            </div>
+        </div>
+</body>
+<script src="/static/socketio/socket.io.min.js"></script>
+<script src="/static/js/room/send.js"></script>
+<script src="/static/js/room/hover.js"></script>
+<script src="/static/js/room/actions.js"></script>
+
+</html>
