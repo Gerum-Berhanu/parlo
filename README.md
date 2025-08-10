@@ -1,5 +1,7 @@
-# LinguaFest
-LinguaFest is a simple and straightforward website that connects people without requiring user identity. It's easy as cake 🍰 enter a nickname, a room code and start chatting with others anonymously.
+# Parlo
+Parlo is a simple and straightforward website that connects people without requiring user identity. It's easy as cake 🍰 enter a nickname, a room code and start chatting with others anonymously.
+
+Live at https://parlo-9pyv.onrender.com
 
 # Releases
 ## v1.0
